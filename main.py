@@ -16,7 +16,7 @@ apihash = os.getenv("API_HASH")
 print("probando",apiid)
 print("probando",bottoken)
 print("probando",apihash)
-bot = Client("pyro_bot",api_id=apiid,api_hash=apihash,bot_token=bottoken,phone="+51962366094")
+bot = Client("pyro_bot",api_id=apiid,api_hash=apihash,bot_token=bottoken,phone_number="+51962366094")
 
 config.configurate(bot)
 
