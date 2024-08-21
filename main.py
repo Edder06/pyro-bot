@@ -13,7 +13,10 @@ apiid = os.getenv("API_ID")
 bottoken = os.getenv("BOT_TOKEN")
 apihash = os.getenv("API_HASH")
 # sesion de mi bot
-bot = Client("pyro_bot",api_id=apiid,api_hash=apihash,bot_token=bottoken)
+print("probando",apiid)
+print("probando",bottoken)
+print("probando",apihash)
+bot = Client("pyro_bot",api_id=apiid,api_hash=apihash,bot_token=bottoken,phone="+51962366094")
 
 config.configurate(bot)
 
