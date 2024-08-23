@@ -12,8 +12,10 @@ import config
 apiid = os.getenv("API_ID")
 bottoken = os.getenv("BOT_TOKEN")
 apihash = os.getenv("API_HASH")
+token = os.getenv("SESSION")
 # sesion de mi bot
-bot = Client("pyro_bot",api_id=apiid,api_hash=apihash,bot_token=bottoken,phone_number="+51962366094")
+# bot = Client("pyro_bot",api_id=apiid,api_hash=apihash,bot_token=bottoken,phone_number="+51962366094")
+bot = Client("pyro_bot",session_string=token)
 
 config.configurate(bot)
 
