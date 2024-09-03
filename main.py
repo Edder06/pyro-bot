@@ -7,6 +7,8 @@ from pyrogram.handlers import MessageHandler
 from pyromod import Client
 
 import config
+from keep_alive import keep_alive
+keep_alive()
 
 
 apiid = os.getenv("API_ID")
