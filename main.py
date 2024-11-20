@@ -9,7 +9,7 @@ from pyrogram.handlers import MessageHandler
 from pyromod import Client
 
 import config
-from keep_alive import keep_alive
+from keep_alive import keep_alive, keep_restart
 keep_alive()
 
 
@@ -101,7 +101,8 @@ async def asd(client, m):
 
 def restart():
     # return os.execl(sys.executable, os.path.abspath(__file__), * sys.argv)
-    return os.execl(sys.executable, * sys.orig_argv)
+    # return os.execl(sys.executable, * sys.orig_argv)
+    keep_restart()
 # -------CANCELAR----------
 
 # aqui inicia el comando
