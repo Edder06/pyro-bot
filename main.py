@@ -14,6 +14,7 @@ keep_alive()
 
 
 me = os.getenv("ME")
+print("mi id :", me)
 token = os.getenv("SESSION")
 # sesion de mi bot
 bot = Client("pyro_bot",session_string=token)
