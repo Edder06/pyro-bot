@@ -67,7 +67,7 @@ cancel_commands = ["cancel", "cancelar"] # referencias de comandos para cancelar
 @bot.on_message(filters.command("restart") & filters.user(me) & filters.private)
 async def asd(client, m):
     try:
-        print("El bot se reiniciara espere...")
+        print("El bot se reiniciara espere...",flush=True)
         restart()
     except Exception as e:
         traceback.print_exc()
@@ -75,7 +75,7 @@ async def asd(client, m):
 @bot.on_message(filters.command("id"))
 async def asd(client, m):
     try:
-        print(m.from_user.id)
+        print(m.from_user.id,flush=True)
     except Exception as e:
         traceback.print_exc()
 
