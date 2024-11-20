@@ -100,7 +100,8 @@ async def asd(client, m):
 
 
 def restart():
-    return os.execl(sys.executable, os.path.abspath(__file__), * sys.argv)
+    # return os.execl(sys.executable, os.path.abspath(__file__), * sys.argv)
+    return os.execl(sys.executable, * sys.orig_argv)
 # -------CANCELAR----------
 
 # aqui inicia el comando
