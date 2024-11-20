@@ -8,8 +8,16 @@ def index():
     return "Alive"
 
 def run():
-  app.run(host='0.0.0.0')
+  app.run(host='0.0.0.0', port=8080)
 
 def keep_alive():  
     t = Thread(target=run)
+    t.start()
+
+def restart():
+    os.execl(sys.executable, sys.executable, *sys.argv)
+
+def keep_restart():
+   #restart thread
+    t = Thread(target=restart)
     t.start()
