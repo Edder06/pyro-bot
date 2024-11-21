@@ -85,14 +85,14 @@ async def asd(client, m):
     try:
         global hand
         chat_id = m.chat.id
-        print("se cancelara el aporte")
+        print("se cancelara el aporte", flush=True)
         await bot.delete_messages(chat_id, m.id)
         ne = await bot.get_messages(m.chat.id,m.id-1)
         if ne.reply_markup:
-            print("se cancelo mensaje de repuestas para evitar errores")
+            print("se cancelo mensaje de repuestas para evitar errores", flush=True)
             bot.edit_message_reply_markup(chat_id, ne.id)
         if hand:
-            print("se borro handler y se termino proceso de aporte")
+            print("se borro handler y se termino proceso de aporte", flush=True)
             await bot.delete_messages(chat_id, message_reference)
             bot.remove_handler(*hand)
             hand = ""
