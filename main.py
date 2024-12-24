@@ -12,7 +12,7 @@ import config
 
 
 me = os.getenv("ME")
-print("mi id :", me, ,flush=True)
+print("mi id :", me,flush=True)
 token = os.getenv("SESSION")
 # sesion de mi bot
 bot = Client("pyro_bot",session_string=token)
