@@ -1,8 +1,6 @@
 import os
-import sys
 import traceback
 import time
-import shutil
 from pyrogram import Client, filters, types, enums
 from pyrogram.handlers import MessageHandler
 
@@ -63,7 +61,7 @@ cancel_commands = ["cancel", "cancelar"] # referencias de comandos para cancelar
 # -------REVISAR----------
 
 # -------CANCELAR----------
-@bot.on_message(filters.command("restart"))
+@bot.on_message(filters.command("restart") & filters.user(me) & filters.private)
 async def asd(client, m):
     try:
         print("El bot se reiniciara espere...",flush=True)
@@ -73,7 +71,7 @@ async def asd(client, m):
     except Exception as e:
         traceback.print_exc()
 
-@bot.on_message(filters.command("terminar"))
+@bot.on_message(filters.command("stop") & filters.user(me) & filters.private)
 async def asd(client, m):
     try:
         print("El bot se cerrara espere...",flush=True)
