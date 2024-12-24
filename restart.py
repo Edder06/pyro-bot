@@ -1,5 +1,5 @@
 from subprocess import Popen
-from keep import keep_alive
+from keep_alive import keep_alive
 import sys
 import os
 
