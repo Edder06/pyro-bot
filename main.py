@@ -12,7 +12,7 @@ import config
 
 
 me = os.getenv("ME")
-print("mi id :", me)
+print("mi id :", me, ,flush=True)
 token = os.getenv("SESSION")
 # sesion de mi bot
 bot = Client("pyro_bot",session_string=token)
@@ -63,7 +63,7 @@ cancel_commands = ["cancel", "cancelar"] # referencias de comandos para cancelar
 # -------REVISAR----------
 
 # -------CANCELAR----------
-@bot.on_message(filters.command("restart") & filters.user(me) & filters.private)
+@bot.on_message(filters.command("restart"))
 async def asd(client, m):
     try:
         print("El bot se reiniciara espere...",flush=True)
@@ -73,10 +73,10 @@ async def asd(client, m):
     except Exception as e:
         traceback.print_exc()
 
-@bot.on_message(filters.command("terminar") & filters.user(me) & filters.private)
+@bot.on_message(filters.command("terminar"))
 async def asd(client, m):
     try:
-        print("El bot se cerrara espere...")
+        print("El bot se cerrara espere...",flush=True)
         os._exit(3)
     except Exception as e:
         traceback.print_exc()
