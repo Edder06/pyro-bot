@@ -9,8 +9,6 @@ from pyrogram.handlers import MessageHandler
 from pyromod import Client
 
 import config
-from keep_alive import keep_alive, keep_restart
-keep_alive()
 
 
 me = os.getenv("ME")
@@ -69,7 +67,17 @@ cancel_commands = ["cancel", "cancelar"] # referencias de comandos para cancelar
 async def asd(client, m):
     try:
         print("El bot se reiniciara espere...",flush=True)
-        restart()
+        # return os.execl(sys.executable, os.path.abspath(__file__), * sys.argv)
+        await bot.stop(block=False)
+        os._exit(1)
+    except Exception as e:
+        traceback.print_exc()
+
+@bot.on_message(filters.command("terminar") & filters.user(me) & filters.private)
+async def asd(client, m):
+    try:
+        print("El bot se cerrara espere...")
+        os._exit(3)
     except Exception as e:
         traceback.print_exc()
 
@@ -99,11 +107,6 @@ async def asd(client, m):
     except Exception as e:
         traceback.print_exc()
 
-
-def restart():
-    # return os.execl(sys.executable, os.path.abspath(__file__), * sys.argv)
-    # return os.execl(sys.executable, * sys.orig_argv)
-    keep_restart()
 # -------CANCELAR----------
 
 # aqui inicia el comando
