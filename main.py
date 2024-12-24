@@ -8,6 +8,9 @@ from pyromod import Client
 
 import config
 
+from keep_alive import keep_alive
+keep_alive()
+
 
 me = os.getenv("ME")
 token = os.getenv("SESSION")
