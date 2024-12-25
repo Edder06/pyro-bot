@@ -491,4 +491,4 @@ async def send_aport():
         traceback.print_exc()
 
 
-bot.run(print("me", "ya esya", flush=True))
+bot.run(print("me", "ya esya"))
