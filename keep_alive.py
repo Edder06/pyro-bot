@@ -9,7 +9,7 @@ def index():
   return "Alive"
 
 def run():
-  app.run(host=os.getenv("PORT"),port=5000)
+  app.run(host=os.getenv("HOST"), port=os.getenv("PORT"))
 
 def keep_alive():  
   t1 = Thread(target=run)
