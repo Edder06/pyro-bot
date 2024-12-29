@@ -1,7 +1,7 @@
 import os
 import traceback
 import time
-from pyrogram import Client, filters, types, enums
+from pyrogram import Client, filters, types, enums, compose
 from pyrogram.handlers import MessageHandler
 
 from pyromod import Client
@@ -15,7 +15,13 @@ keep_alive()
 me = os.getenv("ME")
 token = os.getenv("SESSION")
 # sesion de mi bot
+
+bot1 = Client("pyro_bot",session_string=token)
 bot = Client("pyro_bot",session_string=token)
+
+async def init():
+    async with bot1:
+        await bot1.send_message(int(me), "Bot listo")
 
 config.configurate(bot)
 
@@ -58,11 +64,8 @@ changeNameDoc = "" # referencia para cambiar nombres de documentos aportados
 cancel_words = ["cancel", "/cancel", "cancelar", "/cancelar"] # referencias de palabras para cancelar proceso de aporte en partes donde se deba response sino se debe usar el comando /cancel
 cancel_commands = ["cancel", "cancelar"] # referencias de comandos para cancelar aporte 
 
-# -------REVISAR----------
-#
-# -------REVISAR----------
 
-# -------CANCELAR----------
+# -------RESETEAR----------
 @bot.on_message(filters.command("restart") & filters.user(int(me)) & filters.private)
 async def asd(client, m):
     try:
@@ -80,14 +83,16 @@ async def asd(client, m):
         os._exit(3)
     except Exception as e:
         traceback.print_exc()
-
+# -------ID----------
 @bot.on_message(filters.command("id"))
 async def asd(client, m):
     try:
-        print(m.from_user.id,flush=True)
+        msg_reply = m.reply_to_message_id if m.reply_to_message_id else 1
+        send= f"Tu ID es: {m.from_user.id}"
+        await bot.send_message(m.chat.id, send, reply_to_message_id=msg_reply)
     except Exception as e:
         traceback.print_exc()
-
+# -------CANCELAR----------
 @bot.on_message(filters.command(cancel_commands))
 async def asd(client, m):
     try:
@@ -490,5 +495,8 @@ async def send_aport():
         print("isConfig send_aport")
         traceback.print_exc()
 
-
-bot.run(print("me", "ya esya"))
+bots = [
+    bot1.run(init()),
+    bot.run(print("Bot activo", flush=True))
+]
+compose(bots)
