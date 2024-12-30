@@ -1,5 +1,6 @@
 from flask import Flask
 from threading import Thread
+import os
 
 app = Flask(__name__)
 
@@ -8,7 +9,7 @@ def index():
   return "Alive"
 
 def run():
-  app.run(host='0.0.0.0',port=8080)
+  app.run(host=os.getenv("HOST"), port=os.getenv("PORT"))
 
 def keep_alive():  
   t1 = Thread(target=run)
